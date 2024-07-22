@@ -1,4 +1,5 @@
 using Microsoft.EntityFrameworkCore;
+using Pomelo.EntityFrameworkCore.MySql.Infrastructure;
 using SWO_Book_Store_BE.Model;
 
 var builder = WebApplication.CreateBuilder(args);
@@ -12,7 +13,7 @@ builder.Services.AddSwaggerGen();
 
 builder.Services.AddDbContext<BookDBContext>(options =>
 {
-    options.UseSqlServer(builder.Configuration.GetConnectionString("DevConnection"));
+    options.UseMySql(builder.Configuration.GetConnectionString("DevConnection"), new MySqlServerVersion(new Version(8, 0, 38)));
 });
 
 //services cors
