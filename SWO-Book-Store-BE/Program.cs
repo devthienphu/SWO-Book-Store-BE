@@ -13,7 +13,8 @@ builder.Services.AddSwaggerGen();
 
 builder.Services.AddDbContext<BookDBContext>(options =>
 {
-    options.UseMySql(builder.Configuration.GetConnectionString("DevConnection"), new MySqlServerVersion(new Version(8, 0, 38)));
+    //options.UseMySql(builder.Configuration.GetConnectionString("DevConnection"), new MySqlServerVersion(new Version(8, 0, 38)));
+    options.UseSqlServer(builder.Configuration.GetConnectionString("DevConnection"));
 });
 
 //services cors
